@@ -1,6 +1,7 @@
 import socket
 import threading
 import time
+from rich.console import Console
 
 HEADER = 64
 PORT = 5500
@@ -9,6 +10,7 @@ ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
 
+console = Console()
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 
@@ -23,7 +25,7 @@ def handle_client(conn, addr):
             msg = conn.recv(msg_length).decode(FORMAT)
             if msg == DISCONNECT_MESSAGE:
                 connected = False
-            print(f"[{addr}] {msg}")
+            print(f"[{addr}] {console.print(msg, style='bold red')}")
             conn.send("Msg recieved".encode(FORMAT))
     conn.close()
 
