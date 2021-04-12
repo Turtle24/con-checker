@@ -11,10 +11,16 @@ custom_theme = Theme({
 console = Console(theme=custom_theme)
 
 def chatting():
-    console.print(f"Choose a style: {['red bold']}", style="info")
-    style = input()
-    console.print('Noice choice!', style="danger")
-    message = input()
-    send(message)
+    chatting = True
+    console.print(f"Chat connecting", style="info")
+    console.print('Username:', style="magenta")
+    name = input()
+    send(name)
+    console.print(f"Welcome! {name}", style="info")
+    while chatting:
+        message = input()
+        if message == 'exit':
+            chatting = False
+        send(message)
 
 chatting()
