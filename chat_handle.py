@@ -1,4 +1,4 @@
-from client import send
+from client import send, username
 from rich.console import Console
 from rich.theme import Theme
 
@@ -15,7 +15,7 @@ def chatting():
     console.print(f"Chat connecting", style="info")
     console.print('Username:', style="magenta")
     name = input()
-    send(name)
+    username(name)
     console.print(f"Welcome! {name}", style="info")
     while chatting:
         message = input()

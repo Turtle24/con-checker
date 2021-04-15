@@ -20,11 +20,7 @@ def username(name):
     client.send(username)
     print(client.recv(2048).decode(FORMAT))
 
-def send(msg: str, count=0):
-    if count < 1:
-        username(msg)
-        count += 1
-    count += 1
+def send(msg: str, username='default'):
     message = msg.encode(FORMAT)
     msg_length = len(message)
     send_length = str(msg_length).encode(FORMAT)
