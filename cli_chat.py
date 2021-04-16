@@ -1,6 +1,3 @@
-# from chat_handle import chatting
-from server import disconnect, start, handle_client
-from client import username, send
 from rich import print
 
 import random
