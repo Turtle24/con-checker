@@ -1,0 +1,15 @@
+John - John, name
+John - weo weo
+John - lol
+John - exit
+wow - wow, name
+wow - pew
+wow - exit
+tintin - tintin, name
+tintin - hey
+tintin - wow
+tintin - sick
+John - John, name
+John - working
+John - exit
+tintin - exit

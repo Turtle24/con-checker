@@ -5,7 +5,6 @@ from rich.console import Console
 import logging
 from rich.logging import RichHandler
 from settings import DISCONNECT_MESSAGE, HEADER, SERVER, ADDR, FORMAT, RICHFORMAT
-# import chat_handle
 
 class ServerMaster:
 
@@ -18,6 +17,7 @@ class ServerMaster:
             level="NOTSET", format=RICHFORMAT, datefmt="[%X]", handlers=[RichHandler()]
         )
         self.log = logging.getLogger("rich")
+        self.chats = {}
 
     def disconnect(msg):
         if msg == 'exit':
@@ -37,6 +37,9 @@ class ServerMaster:
                 if 'name' in msg:
                     self.users[addr] = msg.split(',')[0]
                     self.console.print(f"Username: {msg.split(',')[0]}", style='green bold')
+                self.chats[self.users[addr]] = msg
+                with open("chat_history.txt", "a") as file:
+                    file.write(f"{self.users[addr]} - {msg}\n")
                 self.log.info(f"User: {self.users[addr]} - {msg}")
                 self.console.print(f"{self.users[addr]}: {msg}", style='bold red')
                 conn.send("Sent".encode(FORMAT))

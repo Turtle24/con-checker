@@ -14,14 +14,13 @@ def generate_table() -> Table:
     table.add_column("Username")
     table.add_column("Message")
     table.add_column("Status")
-
-    for row in range(random.randint(2, 6)):
-        value = random.random() * 100
+    chats = open('chat_history.txt', 'r')
+    for chat in chats:
+        user, message = chat.split('-')[0], chat.split('-')[1]
         table.add_row(
-            f"{row}", f"{value:3.2f}", "[red]ERROR" if value < 50 else "[green]SUCCESS"
+            f"{user}", f"{message}", "[red]ERROR" if user is None else "[green]SUCCESS"
         )
     return table
-
 
 with Live(generate_table(), refresh_per_second=4) as live:
     for _ in range(40):
