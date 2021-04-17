@@ -15,7 +15,7 @@ class ClientMaster:
         self.client.connect(ADDR)
 
     def username(self, name):
-        name = name + ', name'
+        name = name + ', Joined!'
         username = name.encode(FORMAT)
         msg_length = len(username) + 6
         send_length = str(msg_length).encode(FORMAT)

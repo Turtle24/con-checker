@@ -1,7 +1,6 @@
 from rich import print
 
 import random
-import time
 
 from rich.live import Live
 from rich.table import Table
@@ -21,12 +20,13 @@ def generate_table() -> Table:
     table = Table()
     table.add_column("Username")
     table.add_column("Message")
+    table.add_column('Time')
     table.add_column("Status")
     chats = open('chat_history.txt', 'r')
     for chat in chats:
-        user, message = chat.split('-')[0], chat.split('-')[1]
+        user, message, sent_time = chat.split('-')[0], chat.split('-')[1], chat.split('-')[2]
         table.add_row(
-            f"{user}", f"{message}", "[red]OFFLINE" if 'exit' in message else "[green]ONLINE"
+            f"{user}", f"{message}", f"{sent_time}", "[red]OFFLINE" if 'exit' in message else "[green]ONLINE"
         )
     return table
 

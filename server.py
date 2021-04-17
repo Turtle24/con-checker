@@ -1,6 +1,6 @@
 import socket
 import threading
-import time
+from time import time, ctime
 from rich.console import Console
 import logging
 from rich.logging import RichHandler
@@ -29,21 +29,22 @@ class ServerMaster:
         connected = True
         while connected:
             msg_length = conn.recv(HEADER).decode(FORMAT)
+            t = time()
             if msg_length:
                 msg_length = int(msg_length)
                 msg = conn.recv(msg_length).decode(FORMAT)
                 if msg == DISCONNECT_MESSAGE:
                     connected = False
-                if 'name' in msg:
+                if 'Joined!' in msg:
                     self.users[addr] = msg.split(',')[0]
                     self.console.print(f"Username: {msg.split(',')[0]}", style='green bold')
                 self.chats[self.users[addr]] = msg
                 with open("chat_history.txt", "a") as file:
-                    file.write(f"{self.users[addr]} - {msg}\n")
+                    file.write(f"{self.users[addr]} - {msg} - {ctime(t)}\n")
                 self.log.info(f"User: {self.users[addr]} - {msg}")
                 self.console.print(f"{self.users[addr]}: {msg}", style='bold red')
                 conn.send("Sent".encode(FORMAT))
-        disconnect(msg)
+        self.disconnect(msg)
 
     def start(self):
         self.server.listen()

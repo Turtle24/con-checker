@@ -1,10 +1,10 @@
-peet - yo
-peet - yo
-peet - exit
-sick - sick, name
-sick - s
-sick - exit
-qwer - qwer, name
-qwer - ayyy
-qwer - lmao
-qwer - exit
+Jane - nothing much - Sat Apr 17 11:33:16 2021
+John - even me - Sat Apr 17 11:33:22 2021
+Jane - weather is noice - Sat Apr 17 11:33:30 2021
+John - yeah weather is toit - Sat Apr 17 11:33:41 2021
+John - exit - Sat Apr 17 11:34:49 2021
+Jane - exit - Sat Apr 17 11:34:56 2021
+steve - steve, Joined! - Sat Apr 17 11:35:13 2021
+peet - peet, Joined! - Sat Apr 17 11:35:18 2021
+peet - exit - Sat Apr 17 11:35:28 2021
+kekboi - kekboi, Joined! - Sat Apr 17 11:35:39 2021
