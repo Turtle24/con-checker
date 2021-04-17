@@ -19,9 +19,8 @@ class ServerMaster:
         self.log = logging.getLogger("rich")
         self.chats = {}
 
-    def disconnect(msg):
-        if msg == 'exit':
-            conn.close()
+    def disconnect():
+        conn.close()
 
     def handle_client(self, conn, addr, users = {}):
         print(f"[NEW CONNECTION] {addr} connected.")
@@ -44,7 +43,7 @@ class ServerMaster:
                 self.log.info(f"User: {self.users[addr]} - {msg}")
                 self.console.print(f"{self.users[addr]}: {msg}", style='bold red')
                 conn.send("Sent".encode(FORMAT))
-        self.disconnect(msg)
+        conn.close()
 
     def start(self):
         self.server.listen()
